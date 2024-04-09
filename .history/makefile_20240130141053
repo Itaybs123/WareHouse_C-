@@ -1,0 +1,25 @@
+# Default target
+all: clean compile link
+
+# clean is executed first to remove any existing compiled files.
+# compile is executed next to compile the source code into object files.
+# link is executed to link these object files into an executable.
+
+# Link the executable
+link:
+	g++ -o bin/main bin/Action.o bin/Customer.o bin/main.o bin/Order.o bin/Volunteer.o bin/WareHouse.o
+
+# Compile the source files
+compile:
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/Action.o src/Action.cpp
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/Customer.o src/Customer.cpp
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/main.o src/main.cpp
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/Order.o src/Order.cpp
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/Volunteer.o src/Volunteer.cpp
+	g++ -g -Wall -Weffc++ -I./include -c -o bin/WareHouse.o src/WareHouse.cpp
+
+# Clean build files
+# clean: This target deletes all compiled files to ensure a clean build.
+# rm -f bin/*: This command removes all files inside the bin directory. The -f flag forces deletion without prompting for confirmation.
+clean:
+	rm -f bin/*
